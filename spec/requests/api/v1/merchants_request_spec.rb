@@ -21,4 +21,9 @@ describe 'Merchants API' do
     expect(response).to be_successful
     expect(merchant["data"]["id"]).to eq(id.to_s)
   end
+
+  it "can find a single merchant for a specific parameter" do
+    create_list(:merchant, 3)
+
+  end
 end
