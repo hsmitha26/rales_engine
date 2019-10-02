@@ -12,4 +12,14 @@ describe "Items API" do
 
     expect(items["data"].count).to eq(5)
   end
+
+  it "can get one item by its id" do
+    id = create(:item).id
+
+    get "/api/v1/items/#{id}"
+
+    item = JSON.parse(response.body)
+    expect(response).to be_successful
+    expect(item["data"]["id"]).to eq(id.to_s)
+  end
 end
