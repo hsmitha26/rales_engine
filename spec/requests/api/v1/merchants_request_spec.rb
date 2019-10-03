@@ -68,4 +68,13 @@ describe 'Merchants API' do
 
     expect(response).to be_successful
   end
+
+  it "can get a collection of items associated with a merchant" do
+    merchant_1 = create(:merchant)
+    item1 = create(:item, merchant: merchant_1)
+    item2 = create(:item, merchant: merchant_1)
+    merchant_2 = create(:merchant)
+    item3 = create(:item, merchant: merchant_2)
+    get '/api/v1/merchants/:id/items'
+  end
 end
