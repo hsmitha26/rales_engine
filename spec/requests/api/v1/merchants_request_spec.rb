@@ -42,7 +42,7 @@ describe 'Merchants API' do
     expect(merchant["data"]["attributes"]["name"]).to eq(merchant_find.name)
   end
 
-  it "can all the merchants for a specific parameter - id" do
+  it "can get all the merchants for a specific parameter - id" do
     merchants = create_list(:merchant, 3)
     merchant_find = merchants[2]
     get "/api/v1/merchants/find_all?id=#{merchant_find.id}"
@@ -52,12 +52,20 @@ describe 'Merchants API' do
     expect(merchant[0]["attributes"]["id"]).to eq(merchant_find.id)
   end
 
-  it "can all the merchants for a specific parameter - name" do
+  it "can get all the merchants for a specific parameter - name" do
     merchants = create_list(:merchant, 3)
     get "/api/v1/merchants/find_all?name=#{merchants[1].name}"
     merchant = JSON.parse(response.body)["data"]
 
     expect(response).to be_successful
     expect(merchant[0]["attributes"]["name"]).to eq(merchants[1].name)
+  end
+
+  it "can get a random merchant" do
+    merchants = create_list(:merchant, 3)
+    get "/api/v1/merchants/random"
+    binding.pry
+    expect(response).to be_successful
+    #
   end
 end
