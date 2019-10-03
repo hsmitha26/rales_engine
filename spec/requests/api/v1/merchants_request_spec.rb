@@ -64,8 +64,8 @@ describe 'Merchants API' do
   it "can get a random merchant" do
     merchants = create_list(:merchant, 3)
     get "/api/v1/merchants/random"
-    binding.pry
+    random_merchant = JSON.parse(response.body)
+
     expect(response).to be_successful
-    #
   end
 end
