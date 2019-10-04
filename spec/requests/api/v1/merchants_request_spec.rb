@@ -77,9 +77,9 @@ describe 'Merchants API' do
       @invoice1 = create(:invoice, merchant: @merchant_1)
       @invoice2 = create(:invoice, merchant: @merchant_1)
 
-
       @merchant_2 = create(:merchant)
       @item3 = create(:item, merchant: @merchant_2)
+      @invoice3 = create(:invoice, merchant: @merchant_2)
     end
 
     it "can get a collection of items associated with a merchant" do
@@ -94,7 +94,10 @@ describe 'Merchants API' do
     it "can get a collection of invoices for a specific merchant" do
       get "/api/v1/merchants/#{@merchant_1.id}/invoices"
 
-      merchant_1_invoices = JSON.parse(response.body)
+      merchant_1_invoices = JSON.parse(response.body)["data"]
+
+      expect(response).to be_successful
+      expect(merchant_1_invoices.count).to eq(2)
     end
   end
 end
