@@ -57,7 +57,10 @@ RSpec.describe Merchant, type: :model do
 
       it "returns x number of merchants ranked by total revenue" do
         # binding.pry
-        expect(Merchant.top_merchant_by_revenue(1)).to eq()
+        expect(Merchant.top_merchant_by_revenue(1)).to eq([@m3])
+        expect(Merchant.top_merchant_by_revenue(2)).to eq([@m3, @m2])
+        expect(Merchant.top_merchant_by_revenue(3)).to eq([@m3, @m2, @m1])
+        expect(Merchant.top_merchant_by_revenue(4)).to eq([@m3, @m2, @m1])
       end
     end
   end
