@@ -23,7 +23,7 @@ RSpec.describe Merchant, type: :model do
 
         #item_price: @i11 = 2.0, @i12 = 3.0, @i13 = 4.0
         #unit_price: @ii11 = 2.0 - shipped, @ii12 = 3.0 - pending.
-        #quantity: @ii11 = 2, @ii12 = 3
+        #quantity: @ii11 = 2, @ii12 = 3(pending)
         @i11, @i12, @i13 = create_list(:item, 3, merchant: @m1)
           @in11, @in12 = create_list(:invoice, 2, customer: @c1, merchant: @m1)
           @in13 = create(:invoice, customer: @c1, merchant: @m1, status: "pending")
@@ -56,11 +56,14 @@ RSpec.describe Merchant, type: :model do
       end
 
       it "returns x number of merchants ranked by total revenue" do
-        # binding.pry
         expect(Merchant.top_merchant_by_revenue(1)).to eq([@m3])
         expect(Merchant.top_merchant_by_revenue(2)).to eq([@m3, @m2])
         expect(Merchant.top_merchant_by_revenue(3)).to eq([@m3, @m2, @m1])
         expect(Merchant.top_merchant_by_revenue(4)).to eq([@m3, @m2, @m1])
+      end
+
+      it "returns x number of merchants ranked by total number of items sold" do
+        expect(Merchant.top_merchant_by_items_sold(1)).to eq([@m3])
       end
     end
   end
