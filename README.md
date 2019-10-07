@@ -58,4 +58,4 @@ Controller and model tests can be run using RSpec:
 `rspec`
 
 ## Database Schema
-!(/db/wireframe/db_schema.png)
+![alt text](db/wireframe/db_schema.png)
