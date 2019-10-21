@@ -19,9 +19,9 @@ Rales Engine implements:
 
 1. Clone the following repo: [Rales Engine](https://github.com/hsmitha26/rales_engine)
 2. From your terminal:
-```git clone https://github.com/hsmitha26/rales_engine
- cd rales_engine
- bundle install```
+`git clone https://github.com/hsmitha26/rales_engine`
+ `cd rales_engine`
+ `bundle install`
 3. Database setup:
 `rake db:{create, migrate}`
 4. Run the following rake tasks to import from CSV files:
