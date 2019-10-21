@@ -32,7 +32,7 @@ Rales Engine implements:
 `import:invoice_items`
 `import:transactions`
 
-## Gems Used
+## Ruby Gems Used
 * Pry
 * RSpec
 * Factory Bot
@@ -46,7 +46,7 @@ For example: to access a list of all the merchants, append the above url to:
 http://localhost:3000/api/v1/merchants
 
 ### Endpoints - Exposes Serialized JSON Response
-Record endpoints for: merchants, customers, items, invoices, invoice_items and transactions.
+Record endpoints for: merchants
 
 Example:
 `GET /api/v1/merchants` - shows all the merchant records.
